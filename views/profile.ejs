@@ -1,0 +1,102 @@
+<%- include('header') %>
+
+<section class="jumbotron container mt-5">
+<% if (!user) { %>
+
+	<h1>Welcome!</h1> 
+	
+	<p class="mt-5"><a href="/login/google" class="loginBtn loginBtn--google">Login with Google</a></p>
+	
+	
+<% } else { %>
+	
+	<h2>Your Google Profile</h2><br />
+
+	Language: <%= user._json.locale %>
+
+	<h3><%= user._json.given_name %> <%= user._json.family_name %></h3>
+
+	<%= user._json.email %><br />
+	
+	<span id="url_profile_image" style="visibility: hidden;" ><%= user._json.picture %></span> 
+	
+	<img id="profile_image" scr="" height="250" width="250" />
+		
+	<p class="mt-5"><a onclick="logout()" href="/#" class="loginBtn loginBtn--google">Logout</a></p>
+
+
+<% } %>
+
+</section>
+
+<% if (user) { %>
+ 	
+<!--This script block is placed in all ejs views to load the logout faster--> 
+<script>
+    
+	// Removing the Google User from the localStorage and redirect to Express for logout of Google 
+	function logout()
+	  {
+		localStorage.removeItem('currentUser' );
+        window.location.replace("/logout");
+
+	  } 
+
+</script>
+ 
+  
+ <script>
+		
+		function getImage( url ){
+          
+		  return new Promise( function( resolve, reject ){
+                    
+				var img = new Image()
+
+                img.onload = function(){
+                    resolve( url )
+                   }
+                
+				 img.onerror = function(){
+                    reject( url )
+                   }
+
+                img.src = url
+
+               })
+          }
+
+     // When the page is loaded the Google profile picture will be displayed
+	 $(document).ready( function() {
+		  		
+		// TEST: Make a failure loading an image
+		//const url_profile_image = "xxx.jpg";
+
+		// Getting the URL of the Google profile picture
+		const url_profile_image = document.getElementById( "url_profile_image" ).innerHTML; 
+				
+		// Try to load the Google profile picture by a promise and performing validation
+		getImage( url_profile_image )
+			
+		.then( function( successurl ){
+				
+		    document.getElementById( "profile_image" ).src = successurl;
+		
+		 }).catch( function( errorurl ){
+								
+			//alert( 'No profile picture to load by the URL: ' + errorurl );
+			//document.getElementById("profile_image").style.visibility = "hidden";
+
+			myimg = document.getElementById("profile_image");
+			myimg.remove();
+
+         }) 
+
+			 
+	  }); 
+
+	</script>
+
+<% } %>
+
+<%- include('footer') %>

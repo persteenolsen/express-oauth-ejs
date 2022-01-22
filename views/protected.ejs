@@ -1,0 +1,41 @@
+<%- include('header') %>
+
+<section class="jumbotron container mt-5">
+	
+	<h3>Protected content</h3><br />
+
+
+<% if (user) { %>
+
+       	  
+	- The content of this page is protected behind the Google authentication<br />   
+	
+  
+<% } else { %>
+	
+	- You need to Login
+
+<% } %>
+
+
+</section>
+
+<% if (user) { %>
+  	
+<!--This script block is placed in all ejs views to load the logout faster--> 
+<script>
+    
+	// Removing the Google User from the localStorage and redirect to Express for logout of Google 
+	function logout()
+	  {
+		localStorage.removeItem('currentUser' );
+        window.location.replace("/logout");
+
+	  } 
+
+</script>
+
+
+<% } %>
+
+<%- include('footer') %>

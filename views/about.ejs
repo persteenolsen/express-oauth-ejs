@@ -1,0 +1,33 @@
+<%- include('header') %>
+
+<section class="jumbotron container mt-5">
+    
+    <h3>Description of this Node.js Application</h3><br />
+    
+	- <b>Last updated: 22-01-2022 </b><br /><br />
+
+	- Demo of simple CI / CD using GitHub Actions and Azure App Service <br /> 
+	- Using EJS Templates for the Views<br />   
+	- The Users are authenticated by Google Authentication Server as the External Identity Provider<br />
+     
+</section>
+
+<% if (user) { %>
+  	
+<!--This script block is placed in all ejs views to load the logout faster--> 
+<script>
+    
+	// Removing the Google User from the localStorage and redirect to Express for logout of Google 
+	function logout()
+	  {
+		localStorage.removeItem('currentUser' );
+        window.location.replace("/logout");
+
+	  } 
+
+</script>
+
+
+<% } %>
+
+<%- include('footer') %>

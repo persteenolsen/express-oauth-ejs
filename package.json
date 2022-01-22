@@ -1,0 +1,30 @@
+{
+    "name": "node-express-login-ejs-google",
+    "version": "1.0.0",
+    "description": "Authentication with Google OAuth Server using Node - Express and EJS",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://pso-express-auth-ejs-goog.azurewebsites.net"
+    },
+    "scripts": {
+        "start": "nodemon ./server.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "cors": "^2.8.4",
+        "dotenv": "^8.2.0",
+        "ejs": "^2.5.6",
+        "express": "^4.17.1",
+        "express-session": "^1.17.0",
+        "passport": "^0.4.1",
+        "passport-google-oauth20": "^2.0.0",
+        "referrer-policy": "^1.2.0",
+        "request": "^2.83.0",
+        "rootpath": "^0.1.2",
+        "zip-folder": "^1.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.17.5"
+    }
+}
