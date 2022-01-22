@@ -29,4 +29,4 @@ jobs:
       with:
         app-name: pso-express-auth-ejs-goog
         package: .
-        publish-profile: ${{ secrets.AZURE_CREDENTIALS_72045bdc }}
+        publish-profile: ${{ secrets.AZURE_CREDENTIALS_7f38b930 }}
