@@ -6,6 +6,7 @@
 - HTTPS is used as protocol
 - Passport.js was used for strategy towards the Google Auth Server
 - Node.js and Express
+- DevOps by GitHub Actions
 - The Web API is hosted at Azure App Service using Windows and iisnode
 - Visual Studio Code as Text Editor
 
